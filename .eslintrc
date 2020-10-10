@@ -1,7 +1,9 @@
 {
   "parser": "babel-eslint",
   "env": {
-    "es6": true
+    "es6": true,
+    "node": true,
+    "browser": true
   },
   "plugins": ["promise","prettier"],
   "extends": ["eslint:recommended","plugin:react/recommended","prettier"],
@@ -29,9 +31,7 @@
     "prefer-promise-reject-errors": 2,
     "prefer-arrow-callback": 2,
     "valid-jsdoc": 2,
-    "max-lines": [2, {
-      "max": 200
-    }],
+    "max-lines": 2,
 
     // Prettier Settings
     "prettier/prettier": 2,
