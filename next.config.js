@@ -1,25 +1,8 @@
-const withSass = require("@zeit/next-sass");
-const withLess = require("@zeit/next-less");
-const withCSS = require("@zeit/next-css");
+const withAntdLess = require("next-plugin-antd-less");
 
-const isProd = process.env.NODE_ENV === "production";
-
-// fix: prevents error when .styles files are required by node
-if (typeof require !== "undefined") {
-	require.extensions[".less"] = file => {};
-}
-
-module.exports = withCSS({
-	cssModules: true,
-	cssLoaderOptions: {
-		importLoaders: 1,
-		localIdentName: "[local]___[hash:base64:5]",
+module.exports = withAntdLess({
+	modifyVars: { "@primary-color": "#00b8d0" },
+	webpack(config) {
+		return config;
 	},
-	...withLess(
-		withSass({
-			lessLoaderOptions: {
-				javascriptEnabled: true,
-			},
-		})
-	),
 });
